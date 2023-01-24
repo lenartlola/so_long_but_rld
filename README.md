@@ -1,4 +1,4 @@
-# so-long.
+# so-long state of art.
 
 **This the 42 project so long but modified to be trained to behave artificially using various algorithms.**
 
