@@ -12,6 +12,7 @@
 
 #include "so_long.h"
 
+
 void	ft_update(t_vars *vars)
 {
 	int	i;
@@ -35,6 +36,7 @@ void	ft_update(t_vars *vars)
 	ft_update_enemies(vars);
 }
 
+
 void	ft_update_enemies(t_vars *vars)
 {
 	int	i;
@@ -42,6 +44,8 @@ void	ft_update_enemies(t_vars *vars)
 
 	vars->enemy_turn++;
 	i = 0;
+	if (SMART == 1)
+		printf("%s\n", g_input);
 	while (i < (int)ft_strlen(vars->map->c))
 	{
 		if (vars->enemy_turn % 8 < 4)
@@ -59,4 +63,5 @@ void	ft_update_enemies(t_vars *vars)
 		}
 		i++;
 	}
+
 }

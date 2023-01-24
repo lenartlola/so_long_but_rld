@@ -16,7 +16,11 @@
 # define K_UP 13
 # define K_DOWN 1
 
+# define SMART 0
+
 # define M_GREEN 0, 0, 255, 0
+
+extern char *g_input;
 
 typedef struct s_sizes {
 	int	w;

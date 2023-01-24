@@ -11,6 +11,16 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <pthread.h>
+
+char	*g_input = NULL;
+
+void	*read_input()
+{
+	g_input = get_next_line(0);;
+	return NULL;
+}
+
 
 void	ft_draw_map(t_vars *vars)
 {
@@ -37,6 +47,8 @@ void	ft_draw_map(t_vars *vars)
 int	main(int argc, char **argv)
 {
 	t_vars	vars;
+	pthread_t t;
+
 
 	if (argc != 2 || ft_strlen(argv[1]) <= 0)
 		return (printf("Error\nInput error\n"));
@@ -53,6 +65,10 @@ int	main(int argc, char **argv)
 	ft_draw_map(&vars);
 	mlx_key_hook(vars.win, ft_mlx_key_hook, &vars);
 	mlx_hook(vars.win, 17, 0L, ft_mlx_close, &vars);
+	if (SMART == 1)
+		pthread_create(&t, NULL, &read_input, NULL);
 	mlx_loop(vars.mlx);
+	if (SMART)
+		pthread_join(t, NULL);
 	return (0);
 }
